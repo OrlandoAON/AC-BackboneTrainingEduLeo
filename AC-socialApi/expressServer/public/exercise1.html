@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+	<title>AvenuOrkut - Faceboot - A Facebook style template for Bootstrap</title>
+	<meta name="generator" content="Bootply" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link href="lib/css/bootstrap.min.css" rel="stylesheet" />
+<!--[if lt IE 9]>
+<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<link href="assets/css/styles.css" rel="stylesheet" />
+<link href="assets/css/exercises.css" rel="stylesheet" />
+</head>
+<body>
+	
+		<div id="myViewContainer"></div>	
+
+		<div id="anotherContainer"></div>							
+
+		<!-- script references -->
+		<script type="text/javascript" src="lib/js/jquery.min.js"></script>
+		<script type="text/javascript" src="lib/js/bootstrap.min.js"></script>
+				
+		<script type="text/javascript" src="./lib/js/json2/json2.js"></script>
+		<script type="text/javascript" src="./lib/js/underscore/underscore-min.js"></script>
+		<script type="text/javascript" src="./lib/js/backbone/backbone-min.js"></script>
+		<script type="text/javascript">
+
+			var MyView = Backbone.View.extend({ 
+				render: function() {
+					this.$el.text('Hello World!');
+					this.$el.appendTo('body');
+					return this;
+				}
+			});
+			var myView = new MyView();
+			myView.render();
+
+			var MyViewEL = Backbone.View.extend({ 
+				el: '#myViewContainer',
+				render: function() {
+					this.$el.text('Hello World with EL!');
+					// this.$el.appendTo('body');
+					return this;
+				}
+			});
+			var myViewEL = new MyViewEL();
+			myViewEL.render();
+
+			var myViewEL2 = new MyViewEL({
+				el: '#anotherContainer' //override it
+			});
+			myViewEL2.render();
+
+			var myView3 = new MyView({
+				tagName: 'span', // not a div anymore
+				className: "boxed" // with a custom class name property
+			});
+			myView3.render();
+
+//exercice5
+// Como o elemento já existe, nao faz nada, o render só mostra
+			var myView4 = new MyViewEL({
+				el: '#anotherContainer',
+				tagName: 'span', // not a div anymore
+				className: "boxed" // with a custom class name property
+			});
+			myView4.render();
+//exercice6
+			setTimeout(function(){
+				myView3.remove();
+			},1000);
+			//myView3.remove();
+		</script>
+	</body>
+	</html>

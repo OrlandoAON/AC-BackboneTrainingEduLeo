@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+	<title>AvenuOrkut - Faceboot - A Facebook style template for Bootstrap</title>
+	<meta name="generator" content="Bootply" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link href="lib/css/bootstrap.min.css" rel="stylesheet" />
+<!--[if lt IE 9]>
+<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<link href="assets/css/styles.css" rel="stylesheet" />
+<link href="assets/css/exercises.css" rel="stylesheet" />
+</head>
+<body>
+
+	<div id="myContainer" class="container full"></div>
+	
+	<script type="text/template" id="myMicroTemplate">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h4>What is Backbone.js?</h4>
+		</div>
+		<div class="panel-body">
+			Are we finding out?
+		</div>
+	</div>	
+	</script>
+
+	<script type="text/template" id="myMicroTemplate_">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h4>What is Backbone.js?</h4>
+		</div>
+		<div class="panel-body">
+			<%= answer %>
+		</div>
+	</div>	
+	</script>			
+
+	<!-- script references -->
+	<script type="text/javascript" src="lib/js/jquery.min.js"></script>
+	<script type="text/javascript" src="lib/js/bootstrap.min.js"></script>
+			
+	<script type="text/javascript" src="./lib/js/json2/json2.js"></script>
+	<script type="text/javascript" src="./lib/js/underscore/underscore-min.js"></script>
+	<script type="text/javascript" src="./lib/js/backbone/backbone-min.js"></script>
+	<script type="text/javascript">
+		var ItemView = Backbone.View.extend({
+		    template: _.template($("#myMicroTemplate").html()),
+		    el: '#myContainer',
+		    render: function() {
+				this.$el.html(this.template);
+				// this.$el.appendTo('body');
+				return this;
+			}
+		});
+		var itemView = new ItemView();
+		itemView.render();
+
+		var ItemView2 = Backbone.View.extend({
+		    template: _.template($("#myMicroTemplate").html()),
+		    el: '#myContainer',
+		    render: function() {
+				this.$el.html(this.template);
+				this.$el.find('.panel-body').text('My name');
+				// this.$el.appendTo('body');
+				return this;
+			}
+		});
+		var itemView2 = new ItemView2();
+		itemView2.render();
+
+		var ItemView3 = Backbone.View.extend({
+		    template: _.template($("#myMicroTemplate_").html()),
+		    // el: '#myContainer',
+		    render: function() {
+		    	this.$el.appendTo("#myContainer");
+				this.$el.html(this.template({"answer":"using parameter"}));
+				// this.$el.appendTo('body');
+				return this;
+			}
+		});
+		var itemView3 = new ItemView3();
+		itemView3.render();
+
+	</script>
+		
+	</body>
+	</html>
